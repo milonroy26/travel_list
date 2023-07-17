@@ -1,4 +1,14 @@
+import { useState } from "react";
+
 const Form = () => {
+  const [list, setList] = useState([]);
+  const [item, setItem] = useState("");
+
+  const addToList = () => {
+    list.push(item);
+    setList([...list]);
+  }
+
   return (
     <div>
       <div className="h-100 w-full flex items-center justify-center bg-teal-lightest font-sans">
@@ -13,24 +23,15 @@ const Form = () => {
                 <option value="audi">4</option>
               </select>
               <input
+                // eslint-disable-next-line react/no-unknown-property
+                description = "list"
+                onChange={(e)=>setItem(e.target.value)}
+                
                 className="shadow appearance-none border rounded w-full py-2 px-3 mr-4 ml-4 text-grey-darker"
                 placeholder="Add Todo"
               />
-              <button className="flex-no-shrink p-2 border-2 rounded text-teal border-teal hover:text-white hover:bg-teal">
+              <button onClick={addToList} className="flex-no-shrink p-2 border-2 rounded text-teal border-teal hover:text-white hover:bg-teal">
                 Add
-              </button>
-            </div>
-          </div>
-          <div>
-            <div className="flex mb-4 items-center">
-              <p className="w-full text-grey-darkest">
-                Add another component to Tailwind Components
-              </p>
-              <button className="flex-no-shrink p-2 ml-4 mr-2 border-2 rounded hover:text-white text-green border-green hover:bg-green">
-                Done
-              </button>
-              <button className="flex-no-shrink p-2 ml-2 border-2 rounded text-red border-red hover:text-white hover:bg-red">
-                Remove
               </button>
             </div>
           </div>
